@@ -9,7 +9,7 @@ vim.g.clipboard = {
 	copy = { ["+"] = "wl-copy", ["*"] = "wl-copy" },
 	paste = { ["+"] = "wl-paste", ["*"] = "wl-paste" },
 }
-
+vim.o.wrap = true
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 
 vim.cmd [[

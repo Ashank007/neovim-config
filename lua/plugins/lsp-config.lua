@@ -20,10 +20,11 @@ return {
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
       local lspconfig = require("lspconfig")
+      local util = require("lspconfig.util")
 
       lspconfig.ts_ls.setup({
         capabilities = capabilities,
-        filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+        filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"},
         root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
         settings = {
           javascript = {
@@ -57,7 +58,7 @@ return {
         capabilities = capabilities
       })
       lspconfig.pyright.setup({
-	capabilities = capabilities
+        capabilities = capabilities
       })
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
@@ -65,5 +66,9 @@ return {
       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
     end,
+  },
+  {
+    "mfussenegger/nvim-jdtls",
+    lazy = false,
   },
 }
