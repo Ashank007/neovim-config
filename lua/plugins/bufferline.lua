@@ -24,6 +24,9 @@ return {
 		vim.api.nvim_set_keymap("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", { noremap = true, silent = true })
 		vim.api.nvim_set_keymap("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", { noremap = true, silent = true })
 		vim.api.nvim_set_keymap("n", "<C-X>", "<Cmd>bdelete<CR>", { noremap = true, silent = true }) -- Close current buffer
+		for i = 1, 9 do
+			vim.api.nvim_set_keymap("n", "<M-" .. i .. ">", "<Cmd>BufferLineGoToBuffer " .. i .. "<CR>", { noremap = true, silent = true })
+		end
 	end,
 }
 

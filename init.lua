@@ -4,12 +4,16 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.o.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
+vim.opt.swapfile = false
 vim.g.clipboard = {
 	name = "wl-clipboard",
 	copy = { ["+"] = "wl-copy", ["*"] = "wl-copy" },
 	paste = { ["+"] = "wl-paste", ["*"] = "wl-paste" },
 }
-vim.o.wrap = true
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.showbreak = "↳ " 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 
 vim.cmd [[
