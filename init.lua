@@ -15,6 +15,12 @@ vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.showbreak = "↳ " 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    update_in_insert = false,
+    underline = true,
+})
 
 vim.cmd [[
   hi BufferLineFill guibg=NONE

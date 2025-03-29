@@ -5,17 +5,17 @@ return {
 		null_ls.setup({
 			sources = {
 				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.prettier.with({
-					extra_args = { "--single-quote", "--jsx-single-quote", "--tab-width", "2" }, -- Customize formatting rules
-				}),
-
-				null_ls.builtins.formatting.clang_format,
+				null_ls.builtins.formatting.prettier.with({ extra_args = { "--single-quote", "--jsx-single-quote", "--tab-width", "1", "--semi", "false", "--trailing-comma", "none", "--arrow-parens", "avoid", "--print-width", "200" } }),
 				null_ls.builtins.formatting.black,
 				null_ls.builtins.diagnostics.erb_lint,
 				null_ls.builtins.diagnostics.rubocop,
 				null_ls.builtins.formatting.rubocop,
 			},
 		})
+
+		-- Set keybinding for formatting
 		vim.keymap.set("n", "<F4>", vim.lsp.buf.format, {})
 	end,
 }
+
+
