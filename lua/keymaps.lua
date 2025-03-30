@@ -20,10 +20,10 @@ vim.keymap.set("n", "<leader>sh", ":split<CR>", { silent = true })  -- Split win
 vim.keymap.set("n", "<leader>q", ":q<CR>", { silent = true })  -- Quit window
 vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })  -- Save file
 
-vim.keymap.set("n", "<leader>h", "<C-w>h", { silent = true })  -- Move left
-vim.keymap.set("n", "<leader>l", "<C-w>l", { silent = true })  -- Move right
-vim.keymap.set("n", "<leader>j", "<C-w>j", { silent = true })  -- Move down
-vim.keymap.set("n", "<leader>k", "<C-w>k", { silent = true })  -- Move up
+vim.keymap.set("n", "h", "<C-w>h", { silent = true })  -- Move left
+vim.keymap.set("n", "l", "<C-w>l", { silent = true })  -- Move right
+vim.keymap.set("n", "j", "<C-w>j", { silent = true })  -- Move down
+vim.keymap.set("n", "k", "<C-w>k", { silent = true })  -- Move up
 
 
 -- Buffer Navigation
