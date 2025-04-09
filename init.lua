@@ -21,7 +21,6 @@ vim.diagnostic.config({
     update_in_insert = false,
     underline = true,
 })
-
 vim.cmd [[
   hi BufferLineFill guibg=NONE
   hi BufferLineBufferSelected guifg=#ffcc66 gui=bold

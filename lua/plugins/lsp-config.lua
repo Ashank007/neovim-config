@@ -18,7 +18,6 @@ return {
     lazy = false,
     config = function()
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
       local lspconfig = require("lspconfig")
       local util = require("lspconfig.util")
 
@@ -29,12 +28,15 @@ return {
         settings = {
           javascript = {
             inlayHints = {
-              includeInlayEnumMemberValueHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayParameterNameHints = "all",
-              includeInlayVariableTypeHints = true,
-            },
-            checkJs = true, -- Enable better autocompletion for JS
+		includeInlayParameterNameHints = 'all',
+		includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+		includeInlayFunctionParameterTypeHints = true,
+		includeInlayVariableTypeHints = false,
+		includeInlayPropertyDeclarationTypeHints = true,
+		includeInlayFunctionLikeReturnTypeHints = true,
+		includeInlayEnumMemberValueHints = true,
+		   },
+            checkJs = false, -- Enable better autocompletion for JS
           },
         },
         init_options = {

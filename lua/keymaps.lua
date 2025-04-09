@@ -13,7 +13,7 @@ vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { silent = true }
 vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", { silent = true })  -- Search text
 vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", { silent = true })  -- Switch buffers
 vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>", { silent = true })  -- Search help docs
-
+vim.api.nvim_set_keymap('n', '<leader>fk', '<cmd>Telescope lsp_definitions<cr>', { noremap = true, silent = true })
 -- Window Management
 vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { silent = true })  -- Split window vertically
 vim.keymap.set("n", "<leader>sh", ":split<CR>", { silent = true })  -- Split window horizontally
