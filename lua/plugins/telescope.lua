@@ -16,34 +16,51 @@ return {
 				},
 				defaults = {
 					mappings = {
-						i = { ["<C-x>"] = "delete_buffer" }, -- Delete buffer in insert mode
-						n = { ["<C-x>"] = "delete_buffer" }, -- Delete buffer in normal mode
+						i = { ["<C-x>"] = "delete_buffer" },
+						n = { ["<C-x>"] = "delete_buffer" },
 					},
 				},
 			})
 
-			-- Load extensions
 			telescope.load_extension("ui-select")
 
-			-- Set keybindings
+			-- 🔥 Functions only: const/let async or arrow
+
+			vim.keymap.set("n", "<leader>fs", function()
+				require("telescope.builtin").current_buffer_fuzzy_find({
+					prompt_title = "Arrow Functions in Current Buffer",
+					fuzzy = false,
+					previewer = false,
+					-- Narrow results with a simple function pattern
+					default_text = "const =>",
+				})
+			end, { desc = "Find Arrow Functions in Current Buffer" })
+
+			-- Buffers
 			vim.keymap.set(
 				"n",
 				"<leader>bb",
 				"<cmd>Telescope buffers<CR>",
 				{ silent = true, noremap = true, desc = "Show Buffers" }
 			)
+
+			-- Diagnostics
 			vim.keymap.set(
 				"n",
 				"<leader>xx",
 				"<cmd>Telescope diagnostics<CR>",
 				{ silent = true, noremap = true, desc = "Show Diagnostics" }
 			)
+
+			-- Quickfix
 			vim.keymap.set(
 				"n",
 				"<leader>xq",
 				"<cmd>Telescope quickfix<CR>",
 				{ silent = true, noremap = true, desc = "Show Quickfix List" }
 			)
+
+			-- Loclist
 			vim.keymap.set(
 				"n",
 				"<leader>xl",

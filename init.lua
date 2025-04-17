@@ -13,7 +13,6 @@ vim.g.clipboard = {
 vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
-vim.opt.showbreak = "↳ " 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.diagnostic.config({
     virtual_text = true,
@@ -21,10 +20,42 @@ vim.diagnostic.config({
     update_in_insert = false,
     underline = true,
 })
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
+
 vim.cmd [[
   hi BufferLineFill guibg=NONE
   hi BufferLineBufferSelected guifg=#ffcc66 gui=bold
 ]]
+
+
+-- Enhanced notify catcher
+local notify_log = vim.fn.stdpath("cache") .. "/notify.log"
+
+vim.notify = function(msg, level, opts)
+  local hl = ({
+    [vim.log.levels.ERROR] = "ErrorMsg",
+    [vim.log.levels.WARN] = "WarningMsg",
+    [vim.log.levels.INFO] = "Normal",
+  })[level or vim.log.levels.INFO] or "Normal"
+
+  -- Log to file
+  local f = io.open(notify_log, "a")
+  if f then
+    f:write(("[%s] %s\n"):format(os.date("%Y-%m-%d %H:%M:%S"), msg))
+    f:close()
+  end
+
+  -- Show in floating window
+  vim.api.nvim_echo({ { msg, hl } }, true, {})
+end
+
+-- Shortcut to open notify log
+vim.keymap.set("n", "<Leader>dn", function()
+  vim.cmd("tabnew " .. notify_log)
+end, { desc = "Open Notify Log" })
 
 
 -- Bootstrap lazy.nvim

@@ -63,3 +63,8 @@ vim.keymap.set("n", "<leader>gb", ":Gitsigns blame_line<CR>", { silent = true })
 vim.keymap.set("n", "<leader>gr", ":Gitsigns reset_hunk<CR>", { silent = true })  -- Reset Git hunk
 vim.keymap.set("n", "<leader>gs", ":Gitsigns stage_hunk<CR>", { silent = true })  -- Stage Git hunk
 
+-- Remap arrow keys to behave like gk and gj (move through wrapped lines)
+vim.api.nvim_set_keymap('n', '<Up>', 'gk', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Down>', 'gj', { noremap = true, silent = true })
+
+
