@@ -30,6 +30,7 @@ vim.cmd [[
   hi BufferLineBufferSelected guifg=#ffcc66 gui=bold
 ]]
 
+vim.g.coc_suggest_enable = false
 
 -- Enhanced notify catcher
 local notify_log = vim.fn.stdpath("cache") .. "/notify.log"

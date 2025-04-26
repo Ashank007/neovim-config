@@ -13,24 +13,27 @@ return {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown({}),
 					},
+
 				},
 				defaults = {
 					mappings = {
 						i = { ["<C-x>"] = "delete_buffer" },
 						n = { ["<C-x>"] = "delete_buffer" },
 					},
+          hidden = true,
+          no_ignore = true,
+          file_ignore_patterns = { "node_modules","dist/"},
 				},
 			})
 
 			telescope.load_extension("ui-select")
-
 			-- 🔥 Functions only: const/let async or arrow
 
 			vim.keymap.set("n", "<leader>fs", function()
 				require("telescope.builtin").current_buffer_fuzzy_find({
 					prompt_title = "Arrow Functions in Current Buffer",
 					fuzzy = false,
-					previewer = false,
+					previewer = true,
 					-- Narrow results with a simple function pattern
 					default_text = "const =>",
 				})
@@ -39,7 +42,7 @@ return {
 			-- Buffers
 			vim.keymap.set(
 				"n",
-				"<leader>bb",
+				"<leader>fb",
 				"<cmd>Telescope buffers<CR>",
 				{ silent = true, noremap = true, desc = "Show Buffers" }
 			)
@@ -47,7 +50,7 @@ return {
 			-- Diagnostics
 			vim.keymap.set(
 				"n",
-				"<leader>xx",
+				"<leader>fx",
 				"<cmd>Telescope diagnostics<CR>",
 				{ silent = true, noremap = true, desc = "Show Diagnostics" }
 			)
@@ -55,7 +58,7 @@ return {
 			-- Quickfix
 			vim.keymap.set(
 				"n",
-				"<leader>xq",
+				"<leader>fq",
 				"<cmd>Telescope quickfix<CR>",
 				{ silent = true, noremap = true, desc = "Show Quickfix List" }
 			)
@@ -63,7 +66,7 @@ return {
 			-- Loclist
 			vim.keymap.set(
 				"n",
-				"<leader>xl",
+				"<leader>fl",
 				"<cmd>Telescope loclist<CR>",
 				{ silent = true, noremap = true, desc = "Show Location List" }
 			)
