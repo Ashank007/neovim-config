@@ -38,14 +38,35 @@ return {
     -- === Custom Terminals ===
     local Terminal = require('toggleterm.terminal').Terminal
 
+    -- Define the floating terminal
     local float_term = Terminal:new({ direction = "float", hidden = true })
 
-    local vertical_term = Terminal:new({ direction = "vertical", size = 80, hidden = true })
+    -- Define the vertical terminal (opens from right)
+    local vertical_term = Terminal:new({
+      direction = "vertical",
+      size = 60,
+      hidden = true,
+      -- No position option in `toggleterm`, we will adjust the window manually
+    })
+
+    -- Function to toggle the vertical terminal and center it
     function _VERTICAL_TERM_TOGGLE()
-      vertical_term:toggle()
+      if vertical_term:is_open() then
+        vertical_term:close()  -- Close the terminal if it's open
+      else
+        vertical_term:toggle()  -- Open the terminal if it's closed
+        if vertical_term:is_open() then
+          -- After opening, center the terminal from the right
+          local screen_width = vim.o.columns
+          local term_width = vertical_term.size
+          local offset = (screen_width - term_width) / 2  -- Calculate the offset to center the terminal
+          vim.cmd(string.format("vertical resize %d", term_width)) -- Set the terminal size
+          vim.cmd(string.format("rightbelow vertical resize %d", term_width)) -- Position it from the right side
+        end
+      end
     end
 
-    -- Custom toggles
+    -- Custom toggles for vertical terminal
     vim.api.nvim_set_keymap('n', '<leader>tv', '<cmd>lua _VERTICAL_TERM_TOGGLE()<CR>', opts)
   end
 }
