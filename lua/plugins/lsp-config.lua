@@ -65,6 +65,22 @@ return {
       lspconfig.gopls.setup({
         capabilities = capabilities
       })
+
+      lspconfig.rust_analyzer.setup({
+        capabilities = capabilities,
+        root_dir = lspconfig.util.root_pattern("Cargo.toml", "rust-project.json", ".git"),
+        settings = {
+          ["rust-analyzer"] = {
+            cargo = {
+              allFeatures = true,
+            },
+            checkOnSave = {
+              command = "clippy",
+            },
+          },
+        },
+      })
+
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
