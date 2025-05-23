@@ -2,6 +2,7 @@
 local jdtls = require("jdtls")
 
 local home = os.getenv("HOME")
+local lombok_jar = home .. "/.local/share/lombok/lombok.jar"
 local workspace = home .. "/.local/share/nvim/jdtls/workspace/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
 -- Path to Java 21 (adjust this if your path is different)
@@ -15,6 +16,8 @@ local config_path = jdtls_path .. "/config_linux"
 local config = {
   cmd = {
     java21_path,
+    "-javaagent:" .. lombok_jar,
+    "-Xbootclasspath/a:" .. lombok_jar,
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",

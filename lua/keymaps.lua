@@ -9,7 +9,11 @@ vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true }) 
 vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true }) -- Move line upvalue
 
 -- Telescope (Fuzzy Finder)
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { silent = true })  -- Find files
+vim.keymap.set("n", "<leader>ff", function()
+  require("telescope.builtin").find_files({
+    path_display = { "truncate" }  -- 🪄 truncates the left side of the path
+  })
+end, { silent = true })
 vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", { silent = true })  -- Search text
 vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", { silent = true })  -- Switch buffers
 vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>", { silent = true })  -- Search help docs

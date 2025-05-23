@@ -4,6 +4,8 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.o.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
+vim.env.PATH = vim.env.PATH .. ':/home/ashank/.local/bin'
+
 vim.opt.swapfile = false
 vim.g.clipboard = {
 	name = "wl-clipboard",

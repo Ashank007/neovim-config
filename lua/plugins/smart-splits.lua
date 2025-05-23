@@ -12,10 +12,11 @@ return {
     vim.keymap.set("n", "<A-l>", require("smart-splits").move_cursor_right)
 
     -- Resize splits
-    vim.keymap.set("n", "<A-H>", require("smart-splits").resize_left)
-    vim.keymap.set("n", "<A-J>", require("smart-splits").resize_down)
-    vim.keymap.set("n", "<A-K>", require("smart-splits").resize_up)
-    vim.keymap.set("n", "<A-L>", require("smart-splits").resize_right)
+    vim.keymap.set("n", "<C-Left>", require("smart-splits").resize_left)
+    vim.keymap.set("n", "<C-Down>", require("smart-splits").resize_down)
+    vim.keymap.set("n", "<C-Up>", require("smart-splits").resize_up)
+    vim.keymap.set("n", "<C-Right>", require("smart-splits").resize_right)
+
   end,
 }
 
