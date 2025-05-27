@@ -48,12 +48,14 @@ return {
 			)
 
 			-- Diagnostics
-			vim.keymap.set(
-				"n",
-				"<leader>fx",
-				"<cmd>Telescope diagnostics<CR>",
-				{ silent = true, noremap = true, desc = "Show Diagnostics" }
-			)
+      vim.keymap.set("n", "<leader>fx", function()
+        -- Send diagnostics to quickfix list
+        vim.diagnostic.setqflist()
+
+        -- Then open the quickfix list via Telescope
+        require("telescope.builtin").quickfix()
+      end, { silent = true, noremap = true, desc = "Diagnostics → Quickfix via Telescope" }
+      )
 
 			-- Quickfix
 			vim.keymap.set(
