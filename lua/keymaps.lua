@@ -1,8 +1,5 @@
 -- Set leader key
 vim.g.mapleader = " "  -- Space as leader
-vim.keymap.set('n', '<leader>e', function()
-  vim.cmd("Neotree filesystem reveal left")
-end, {})
 
 
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true }) -- Move line down

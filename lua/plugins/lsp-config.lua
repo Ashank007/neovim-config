@@ -11,6 +11,15 @@ return {
     lazy = false,
     opts = {
       auto_install = true,
+      handlers = {
+        function(server_name)
+          if server_name ~= "rust_analyzer" then -- Skip rust_analyzer
+            require("lspconfig")[server_name].setup {
+              capabilities = require('cmp_nvim_lsp').default_capabilities(),
+            }
+          end
+        end,
+      },
     },
   },
   {
@@ -68,7 +77,6 @@ return {
 
       lspconfig.rust_analyzer.setup({
         capabilities = capabilities,
-        root_dir = lspconfig.util.root_pattern("Cargo.toml", "rust-project.json", ".git"),
         settings = {
           ["rust-analyzer"] = {
             cargo = {
@@ -77,6 +85,9 @@ return {
             checkOnSave = {
               command = "clippy",
             },
+            diagnostics = {
+              enable = true
+            }
           },
         },
       })
