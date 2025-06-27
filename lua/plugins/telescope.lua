@@ -22,7 +22,7 @@ return {
 					},
           hidden = true,
           no_ignore = true,
-          file_ignore_patterns = { "node_modules","dist/"},
+          file_ignore_patterns = { "node_modules","dist/","venv"},
 				},
 			})
 
