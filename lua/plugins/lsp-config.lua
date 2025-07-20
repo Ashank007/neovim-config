@@ -13,11 +13,9 @@ return {
       auto_install = true,
       handlers = {
         function(server_name)
-          if server_name ~= "rust_analyzer" then -- Skip rust_analyzer
             require("lspconfig")[server_name].setup {
-              capabilities = require('cmp_nvim_lsp').default_capabilities(),
+              capabilities = require("coq").lsp_ensure_capabilities( require('cmp_nvim_lsp').default_capabilities()),
             }
-          end
         end,
       },
     },
